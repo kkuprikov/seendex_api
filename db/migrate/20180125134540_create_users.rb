@@ -5,9 +5,8 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.datetime :last_online_at
       t.datetime :created_at
 
-      add_index :users, :nickname, unique: true
-
-      t.timestamps
     end
+
+    add_index :users, :nickname, unique: true
   end
 end

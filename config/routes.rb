@@ -6,5 +6,4 @@ Rails.application.routes.draw do
       get ':current_user_id/:target_user_id', to: 'messages#index'
     end
   end
-
 end
