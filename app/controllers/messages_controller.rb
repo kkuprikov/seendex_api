@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
 
     @sender.update(last_online_at: Time.now)
 
-    render json: { success: true, payload: { id: @message.id } }, status: 200
+    render json: { success: true, payload: { id: @message.id } }
   end
 
   def index

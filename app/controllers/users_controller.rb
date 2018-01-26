@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
     begin
       @user = User.create!(user_params.merge(last_online_at: Time.now))
-      render json: { success: true, payload: { id: @user.id } }, status: 200
+      render json: { success: true, payload: { id: @user.id } }
     rescue ActiveRecord::RecordNotUnique
       render json: { success: false, errors: 'NICKNAME_TAKEN' }, status: 400
     end
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
                     order_by_last_online(users_last_day) +
                     order_by_last_online(others)
 
-    render json: { success: true, users: @users_sorted }, status: 200
+    render json: { success: true, users: @users_sorted }
   end
 
   private
