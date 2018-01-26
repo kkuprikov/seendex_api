@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+
+  # POST /messages?from=1&to=2
   def create
     if message_params[:from].blank? || message_params[:to].blank?
       render(json: { success: false,
@@ -22,6 +24,7 @@ class MessagesController < ApplicationController
     render json: { success: true, payload: { id: @message.id } }
   end
 
+  # GET /messages/:current_user_id/:target_user_id
   def index
     @current_user = User.find_by_id params[:current_user_id]
 
@@ -44,7 +47,7 @@ class MessagesController < ApplicationController
     @messages.where('receiver_id = ? AND read = ?', @current_user.id, false).update(read: true)
     @current_user.update(last_online_at: Time.now)
 
-    render json: { success: true, messages: @messages }
+    render json: { success: true, messages: @messages.as_json(except: :read) }
   end
 
   private

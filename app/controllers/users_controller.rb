@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    messages_count = Message.group('receiver_id').count # { user1_id: messages_count ... }
+    messages_count = Message.where(read: false).group('receiver_id').count # { user1_id: messages_count ... }
     users = User.all.as_json
 
     users_with_messages = []
