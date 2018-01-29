@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  nickname: MyText
+user1:
+  nickname: user1
   last_online_at: 2018-01-25 16:45:40
   created_at: 2018-01-25 16:45:40
 
-two:
-  nickname: MyText
+user2:
+  nickname: user2
   last_online_at: 2018-01-25 16:45:40
   created_at: 2018-01-25 16:45:40
