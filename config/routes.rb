@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :create]
   resources :messages, only: [:create] do
     collection do
-      get ':current_user_id/:target_user_id', to: 'messages#index'
+      get ':current_user_id/:target_user_id', to: 'messages#index', as: 'index'
     end
   end
 end
