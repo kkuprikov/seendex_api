@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 
     @users_sorted = order_by_last_online(users_with_messages) +
                     order_by_last_online(users_last_day) +
-                    order_by_last_online(others)
+                    order_by_created_at(others)
 
     render json: { success: true, users: @users_sorted }
   end
@@ -52,5 +52,9 @@ class UsersController < ApplicationController
 
   def order_by_last_online(users)
     users.sort_by { |u| u['last_online_at'] }.reverse
+  end
+
+  def order_by_created_at(users)
+    users.sort_by { |u| u['created_at'] }.reverse
   end
 end
